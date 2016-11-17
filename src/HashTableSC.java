@@ -57,6 +57,10 @@ public class HashTableSC<T> implements HashTable<T>, HashMetrics
       TableEntry node = (TableEntry)(table[location]);
       while(node != null){
 			if(node.element.equals(element)){
+            curCol++;
+            collisions+=curCol;
+            if(curCol > maxCollisions)
+               maxCollisions = curCol;
 				return false;
 			}
          if(node.next == null){
